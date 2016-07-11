@@ -1,6 +1,6 @@
 # Ember-cli-superlogin
 
-This README outlines the details of collaborating on this Ember addon.
+This is a work-in-progress.  I'm writting a service to integrate ember-simple-auth with node's superlogin server.
 
 ## Installation
 

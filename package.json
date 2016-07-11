@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-superlogin",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A service to integrate ember-simple-auth with a superlogin backend.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "git@github.com:mattmarcum/ember-cli-superlogin.git",
   "engines": {
     "node": ">= 0.10.0"
   },
