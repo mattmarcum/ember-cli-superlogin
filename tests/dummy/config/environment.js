@@ -26,6 +26,10 @@ module.exports = function(environment) {
     routeIfAlreadyAuthenticated: 'account'
   };
 
+  ENV['ember-cli-superlogin'] = {
+    server: 'http://localhost:3000/auth'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

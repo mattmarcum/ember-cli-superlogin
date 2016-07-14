@@ -1,54 +1,58 @@
+import config from '../config/environment';
+
+const { server } = config['ember-cli-superlogin'];
+
 export default function() {
 
-  this.post('/register', ()=>{
-
+  this.post(`${server}/register`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/login', ()=>{
-
+  this.post(`${server}/login`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/refresh', ()=>{
-
+  this.post(`${server}/refresh`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/logout', ()=>{
-
+  this.post(`${server}/logout`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/logout-others', ()=>{
-
+  this.post(`${server}/logout-others`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/logout-all', ()=>{
-
+  this.post(`${server}/logout-all`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/forgot-password', ()=>{
-
+  this.post(`${server}/forgot-password`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/password-reset', ()=>{
-
+  this.post(`${server}/password-reset`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/password-change', ()=>{
-
+  this.post(`${server}/password-change`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.get('/validate-username/:username', ()=>{
-
+  this.get(`${server}/validate-username/:username`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.get('/validate-email/:email', ()=>{
-
+  this.get(`${server}/validate-email/:email`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.post('/change-email', ()=>{
-
+  this.post(`${server}/change-email`, ()=>{
+    return { response: 'ok' }
   });
 
-  this.get('/session', ()=>{
-
+  this.get(`${server}/session`, ()=>{
+    return { response: 'ok' }
   });
 }

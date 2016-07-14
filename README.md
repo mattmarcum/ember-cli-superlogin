@@ -2,6 +2,15 @@
 
 This is a work-in-progress.  I'm writting a service to integrate ember-simple-auth with node's superlogin server.
 
+## Config
+
+* Add an `ember-cli-superlogin` section to your config's environment like so:
+```javascript
+ENV['ember-cli-superlogin'] = {
+  server: 'http://localhost:3000/auth'
+}
+```
+
 ## Installation
 
 * `git clone <repository-url>` this repository
