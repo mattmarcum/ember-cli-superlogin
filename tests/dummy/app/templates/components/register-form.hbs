@@ -1,0 +1,37 @@
+<label>Username:
+{{input type="text" value=username}}
+<span class="{{if usernameValid "valid" "invalid"}}">
+  {{#if hasValidated}}
+    {{#if usernameValid}}Username is available!
+    {{else}}Username is taken!
+    {{/if}}
+  {{/if}}
+</span>
+</label>
+
+<label>Password:
+{{input type="password" value=password}}
+</label>
+
+<label>Verify Password:
+  {{input type="password" value=verifyPassword}}
+
+<span class="{{if passwordValid "valid" "invalid"}}">
+  {{#if hasValidated}}
+    {{#unless passwordValid}}Passwords do no match!{{/unless}}
+  {{/if}}
+</span>
+</label>
+
+<label>Username:
+{{input type="text" value=username}}
+<span class="{{if usernameValid "valid" "invalid"}}">
+  {{#if hasValidated}}
+    {{#if usernameValid}}Username is available!
+    {{else}}Username is taken!
+    {{/if}}
+  {{/if}}
+</span>
+</label>
+
+<button {{action "submit"}}>Submit</button>

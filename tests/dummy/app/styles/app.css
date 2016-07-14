@@ -1,0 +1,28 @@
+body {
+  padding: 2rem;
+  font-family: sans-serif;
+  width: 40rem;
+}
+
+label, button {
+  display: block;
+  margin: 1rem;
+}
+
+button {
+  float: right;
+}
+
+.valid {
+  color: blue;
+}
+
+.invalid {
+  background-color: red;
+  color: white;
+}
+
+input {
+  float: right;
+  width: 20rem;
+}
