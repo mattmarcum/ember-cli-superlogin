@@ -1,6 +1,6 @@
 # Ember-cli-superlogin
 
-This is a work-in-progress.  I'm writting a service to integrate ember-simple-auth with node's superlogin server.
+This is a work-in-progress.  I'm writting a service to integrate ember-simple-auth with node's [superlogin server](https://www.npmjs.com/package/superlogin).
 
 ## Config
 

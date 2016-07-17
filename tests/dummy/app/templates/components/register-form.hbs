@@ -1,7 +1,7 @@
 <label>Username:
-{{input type="text" value=username}}
+{{input type="text" value=username change=(action "validateUsername" value="target.value")}}
 <span class="{{if usernameValid "valid" "invalid"}}">
-  {{#if hasValidated}}
+  {{#if hasValidatedUsername}}
     {{#if usernameValid}}Username is available!
     {{else}}Username is taken!
     {{/if}}
@@ -10,23 +10,23 @@
 </label>
 
 <label>Password:
-{{input type="password" value=password}}
+{{input type="password" value=password change=(action "validatePassword" value="target.value")}}
 </label>
 
 <label>Verify Password:
-  {{input type="password" value=verifyPassword}}
+  {{input type="password" value=verifyPassword change=(action "validatePassword" value="target.value")}}
 
 <span class="{{if passwordValid "valid" "invalid"}}">
-  {{#if hasValidated}}
+  {{#if hasValidatedPassword}}
     {{#unless passwordValid}}Passwords do no match!{{/unless}}
   {{/if}}
 </span>
 </label>
 
-<label>Username:
-{{input type="text" value=username}}
+<label>Email:
+{{input type="text" value=email change=(action "validateEmail" value="target.value")}}
 <span class="{{if usernameValid "valid" "invalid"}}">
-  {{#if hasValidated}}
+  {{#if hasValidatedEmail}}
     {{#if usernameValid}}Username is available!
     {{else}}Username is taken!
     {{/if}}

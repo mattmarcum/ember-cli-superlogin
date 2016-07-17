@@ -1,0 +1,16 @@
+{
+  "name": "ember-cli-superlogin",
+  "description": "A service to integrate ember-simple-auth with a superlogin backend.",
+  "version": "0.0.0",
+  "options": {
+    "paths": [
+      "addon"
+    ],
+    "exclude": "vendor",
+    "outdir": "docs",
+    "linkNatives": true,
+    "quiet": true,
+    "parseOnly": false,
+    "lint": false
+  }
+}
