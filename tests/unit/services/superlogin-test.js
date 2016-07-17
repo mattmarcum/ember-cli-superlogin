@@ -1,12 +1,31 @@
-import { moduleFor, test } from 'ember-qunit';
+/* jshint expr:true */
+import { expect } from 'chai';
+import {
+  describeModule,
+  it
+} from 'ember-mocha';
 
-moduleFor('service:superlogin', 'Unit | Service | superlogin', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
-});
+describeModule(
+  'service:superlogin',
+  'SuperloginService',
+  {
+    // Specify the other units that are required for this test.
+    // needs: ['service:foo']
+  },
+  function() {
+    // Replace this with your real tests.
+    it('returns a rejected promise on invalid username', function() {
+      let service = this.subject();
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
-});
+      const promise = service.validateUsername('test');
+
+    });
+
+    it('returns a resolved promise on valid username', function() {
+      let service = this.subject();
+
+      const promise = service.validateUsername('superlogin');
+
+    });
+  }
+);

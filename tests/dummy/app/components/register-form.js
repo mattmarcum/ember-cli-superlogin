@@ -1,21 +1,40 @@
 import Ember from 'ember';
 import layout from '../templates/components/register-form';
 
-const { get, set } = Ember;
+const { get, set, setProperties, inject:{ service } } = Ember;
 
 export default Ember.Component.extend({
-  hasValidated: false,
-  usernameValid: false,
-  emailValid: false,
+  superlogin: service(),
 
   username: '',
+  hasValidatedUsername: false,
+  usernameValid: false,
+
+  email: '',
+  hasValidatedEmail: false,
+  emailValid: false,
+
   password: '',
   verifyPassword: '',
-  email: '',
+  hasValidatedPassword: false,
+  passwordValid: false,
 
   actions: {
     validateUsername(username) {
-
+      get(this, 'superlogin')
+      .validateUsername(username)
+      .then( ()=>
+        setProperties(this, {
+          hasValidatedUsername: true,
+          usernameValid: true
+        })
+      )
+      .catch( ()=>
+        setProperties(this, {
+          hasValidatedUsername: true,
+          usernameValid: false
+        })
+      );
     },
     validateEmail(email) {
 
