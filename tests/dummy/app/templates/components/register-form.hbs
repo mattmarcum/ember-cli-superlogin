@@ -25,10 +25,10 @@
 
 <label>Email:
 {{input type="text" value=email change=(action "validateEmail" value="target.value")}}
-<span class="{{if usernameValid "valid" "invalid"}}">
+<span class="{{if emailValid "valid" "invalid"}}">
   {{#if hasValidatedEmail}}
-    {{#if usernameValid}}Username is available!
-    {{else}}Username is taken!
+    {{#if emailValid}}Email is available!
+    {{else}}Email is taken!
     {{/if}}
   {{/if}}
 </span>

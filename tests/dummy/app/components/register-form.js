@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import layout from '../templates/components/register-form';
 
-const { get, set, setProperties, inject:{ service } } = Ember;
+const { get, set, inject:{ service } } = Ember;
 
 export default Ember.Component.extend({
   superlogin: service(),
@@ -23,22 +22,19 @@ export default Ember.Component.extend({
     validateUsername(username) {
       get(this, 'superlogin')
       .validateUsername(username)
-      .then( ()=>
-        setProperties(this, {
-          hasValidatedUsername: true,
-          usernameValid: true
-        })
-      )
-      .catch( ()=>
-        setProperties(this, {
-          hasValidatedUsername: true,
-          usernameValid: false
-        })
-      );
+      .then(()=>set(this, 'usernameValid', true))
+      .catch(()=>set(this, 'usernameValid', false))
+      .finally(()=>set(this, 'hasValidatedUsername', true));
     },
-    validateEmail(email) {
 
+    validateEmail(email) {
+      get(this, 'superlogin')
+      .validateEmail(email)
+      .then(()=>set(this, 'emailValid', true))
+      .catch(()=>set(this, 'emailValid', false))
+      .finally(()=>set(this, 'hasValidatedEmail', true));
     },
+
     validatePassword(password) {
 
     },

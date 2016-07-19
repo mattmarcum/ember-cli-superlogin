@@ -27,7 +27,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-cli-superlogin'] = {
-    server: 'http://localhost:3000/auth'
+    serverURL: 'http://localhost:3000/auth'
   }
 
   if (environment === 'development') {

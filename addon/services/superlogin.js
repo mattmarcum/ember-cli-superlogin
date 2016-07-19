@@ -2,7 +2,7 @@ import Ember from 'ember';
 import fetch from "ember-network/fetch";
 import config from 'ember-get-config';
 
-const { server: serverHostname } = config['ember-cli-superlogin'];
+const { serverURL } = config['ember-cli-superlogin'];
 
 /**
 * Superlogin provides a service abstracting all of the restful api endpoints
@@ -22,10 +22,21 @@ export default Ember.Service.extend({
   /**
   * @method validateUsername
   * @param {String} username
-  * @return {Promise} A promise that will reject on invalid username 
+  * @return {Promise} A promise that will reject on invalid username
   */
   validateUsername(username) {
-    return fetch(`${serverHostname}/validate-username/${username}`)
-    .then(response => httpCodeCheck(response));
-  }
+    return fetch(`${serverURL}/validate-username/${username}`)
+    .then(httpCodeCheck);
+  },
+
+  /**
+  * @method validateEmail
+  * @param {String} email
+  * @return {Promise} A promise that will reject on invalid email
+  */
+  validateEmail(email) {
+    return fetch(`${serverURL}/validate-email/${email}`)
+    .then(httpCodeCheck);
+  },
+
 });

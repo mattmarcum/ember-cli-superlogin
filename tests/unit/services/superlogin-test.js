@@ -11,14 +11,12 @@ describeModule(
   'service:superlogin',
   'SuperloginService',
   {
-    // Specify the other units that are required for this test.
-    // needs: ['service:foo']
   },
   function() {
     before(function() {
       mirageStarter(this.container);
     });
-    // Replace this with your real tests.
+
     it('returns a rejected promise on invalid username', function() {
       let service = this.subject();
 
@@ -30,6 +28,20 @@ describeModule(
       let service = this.subject();
 
       const promise = service.validateUsername('superlogin');
+      return expect(promise).to.be.fulfilled;
+    });
+
+    it('returns a rejected promise on invalid email', function() {
+      let service = this.subject();
+
+      const promise = service.validateEmail('asdf');
+      return expect(promise).to.be.rejected;
+    });
+
+    it('returns a resolved promise on valid email', function() {
+      let service = this.subject();
+
+      const promise = service.validateEmail('super@login.com');
       return expect(promise).to.be.fulfilled;
     });
   }
