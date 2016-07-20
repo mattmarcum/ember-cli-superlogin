@@ -18,6 +18,11 @@ function httpCodeCheck(response, errorMsg){
   return response;
 }
 
+const postOptions = {
+  method: 'POST',
+  headers: new Headers({
+    'Content-Type': ''
+  })
 export default Ember.Service.extend({
   /**
   * @method validateUsername
@@ -38,5 +43,16 @@ export default Ember.Service.extend({
     return fetch(`${serverURL}/validate-email/${email}`)
     .then(httpCodeCheck);
   },
+
+  /**
+  * @method register
+  * @param {Object} params, an object with key/value pairs of required params: username, email, password and confirmPassword.
+  * @return {Promise} A promise that will reject on invalid email
+  */
+  register(params) {
+    return fetch(`${serverURL}/register`)
+    .then(httpCodeCheck);
+  },
+
 
 });
