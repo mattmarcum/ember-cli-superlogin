@@ -4,25 +4,24 @@ import config from 'ember-get-config';
 
 const { serverURL } = config['ember-cli-superlogin'];
 
+const postOptions = (params) => {
+  method: 'POST',
+  body: window.FormData(params)
+}
+
+function statusCheck(response){
+  if(!response.ok){
+    throw new Error(response.statusText);
+  }
+  return response;
+}
+
 /**
 * Superlogin provides a service abstracting all of the restful api endpoints
 * for the [node Superlogin server](https://www.npmjs.com/package/superlogin).
 *
 * @class Superlogin
 */
-
-function httpCodeCheck(response, errorMsg){
-  if(!response.ok){
-    throw errorMsg;
-  }
-  return response;
-}
-
-const postOptions = {
-  method: 'POST',
-  headers: new Headers({
-    'Content-Type': ''
-  })
 export default Ember.Service.extend({
   /**
   * @method validateUsername
@@ -31,7 +30,7 @@ export default Ember.Service.extend({
   */
   validateUsername(username) {
     return fetch(`${serverURL}/validate-username/${username}`)
-    .then(httpCodeCheck);
+    .then(statusCheck);
   },
 
   /**
@@ -41,7 +40,7 @@ export default Ember.Service.extend({
   */
   validateEmail(email) {
     return fetch(`${serverURL}/validate-email/${email}`)
-    .then(httpCodeCheck);
+    .then(statusCheck);
   },
 
   /**
@@ -50,9 +49,8 @@ export default Ember.Service.extend({
   * @return {Promise} A promise that will reject on invalid email
   */
   register(params) {
-    return fetch(`${serverURL}/register`)
-    .then(httpCodeCheck);
-  },
-
+    return fetch(`${serverURL}/register`, postOptions(params))
+    .then(statusCheck);
+  }
 
 });
