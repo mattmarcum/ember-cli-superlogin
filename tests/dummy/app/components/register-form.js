@@ -1,9 +1,15 @@
 import Ember from 'ember';
 
-const { get, set, inject:{ service } } = Ember;
+const {
+    computed: { and },
+    get, getProperties,
+    set, setProperties,
+    inject: { service }
+  } = Ember;
 
 export default Ember.Component.extend({
   superlogin: service(),
+  flashMessages: service(),
 
   username: '',
   hasValidatedUsername: false,
@@ -17,6 +23,13 @@ export default Ember.Component.extend({
   verifyPassword: '',
   hasValidatedPassword: false,
   passwordValid: false,
+
+  formHasValidated: and('hasValidatedUsername', 'hasValidatedEmail',
+    'hasValidatedPassword'),
+
+  formIsValid: and('usernameValid', 'emailValid', 'passwordValid'),
+
+  formError: '',
 
   actions: {
     validateUsername(username) {
@@ -35,15 +48,39 @@ export default Ember.Component.extend({
       .finally(()=>set(this, 'hasValidatedEmail', true));
     },
 
-    validatePassword(password) {
+    validatePassword() {
+      let { password, verifyPassword } =
+        getProperties(this, 'password', 'verifyPassword');
 
+      setProperties(this, {
+        passwordValid: password===verifyPassword,
+        hasValidatedPassword: true
+      });
     },
 
     submit() {
-      if(!get(this, 'hasValidated')) {
-        set(this, 'hasValidated', true);
+      const flashMessages = get(this, 'flashMessages');
+
+      if (!get(this, 'formHasValidated')) {
+        setProperties(this, {
+          hasValidatedUsername: true,
+          hasValidatedEmail: true,
+          hasValidatedPassword: true
+        });
         return;
       }
+
+      if (!get(this, 'formIsValid')) {
+        return;
+      }
+
+      return get(this, 'superlogin')
+      .register(getProperties(this, 'username', 'email', 'password'))
+      .then(()=> {
+        flashMessages.success('Successfully Registered!');
+        get(this, 'successTransition')();
+      })
+      .catch(err => set(this, 'formError', err));
     }
   }
 });

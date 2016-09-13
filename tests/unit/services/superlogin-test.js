@@ -1,5 +1,6 @@
 /* jshint expr:true */
 import { expect } from 'chai';
+import { before } from 'mocha';
 import {
   describeModule,
   it
