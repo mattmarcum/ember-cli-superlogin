@@ -4,17 +4,22 @@ import config from 'ember-get-config';
 
 const { serverURL } = config['ember-cli-superlogin'];
 
-const postOptions = (params) => {
+const postOptions = (params) => ({
   method: 'POST',
-  body: window.FormData(params)
-}
+  headers: {
+   'Accept': 'application/json',
+   'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(params)
+});
 
-function statusCheck(response){
-  if(!response.ok){
+const statusCheck = (response) => {
+  if (!response.ok) {
     throw new Error(response.statusText);
   }
+
   return response;
-}
+};
 
 /**
 * Superlogin provides a service abstracting all of the restful api endpoints

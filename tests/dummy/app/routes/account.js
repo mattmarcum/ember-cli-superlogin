@@ -3,10 +3,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   actions: {
-    changePassword(password) {
+    changePassword(/*password*/) {
 
     },
-    changeEmail(email) {
+    changeEmail(/*email*/) {
 
     },
     logoutOthers() {
